@@ -8,8 +8,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Install Node Modules
 
-Before running the project, you need to install Node Modules as follows
-From the root folder run `npm install`
+Before running the project, you need to install Node Modules.From the root folder run `npm install`
 
 ## Development server
 
