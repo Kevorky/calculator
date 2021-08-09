@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="logo-container">
+    <img
+      class="logo"
+      src="assets/images/logo.svg"
+      alt="[=] Equal Experts"
+      style=""
+    />
+  </div>
+  <div class="result">{{ result }}</div>
+  <div class="buttons">
+    <span class="button btn-ac resetBtn" (click)="allClear()">AC</span>
+    <span class="button btn-plus-minus negative operator" (click)="comingSoon()"
+      >+/-</span
+    >
+    <span class="button btn-percent operator percent" (click)="comingSoon()"
+      >%</span
+    >
+    <span class="button btn-divide operator" (click)="action(operand.Divide)"
+      >/</span
+    >
+    <span class="button btn-7 number" (click)="input(7)">7</span>
+    <span class="button btn-8 number" (click)="input(8)">8</span>
+    <span class="button btn-9 number" (click)="input(9)">9</span>
+    <span
+      class="button btn-multiply operator"
+      (click)="action(operand.Multiply)"
+      >*</span
+    >
+    <span class="button btn-4 number" (click)="input(4)">4</span>
+    <span class="button btn-5 number" (click)="input(5)">5</span>
+    <span class="button btn-6 number" (click)="input(6)">6</span>
+    <span
+      class="button btn-subtract operator"
+      (click)="action(operand.Subtract)"
+      >-</span
+    >
+    <span class="button btn-1 number" (click)="input(1)">1</span>
+    <span class="button btn-2 number" (click)="input(2)">2</span>
+    <span class="button btn-3 number" (click)="input(3)">3</span>
+    <span class="button btn-plus operator" (click)="action(operand.Add)"
+      >+</span
+    >
+    <span class="button btn-0 number" (click)="input(0)">0</span>
+    <span class="button btn-dot number" (click)="input('.')">.</span>
+    <span class="button btn-equal operator" (click)="calculateResult()">=</span>
+  </div>
+</div>
