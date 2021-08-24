@@ -156,4 +156,32 @@ describe('CalculatorComponent', () => {
       });
     })
   );
+
+  it(
+    'should calculate result when use presses equal',
+    waitForAsync(() => {
+      let button1El = fixture.debugElement.query(By.css('.btn-1'));
+      let button0El = fixture.debugElement.query(By.css('.btn-0'));
+      let button5El = fixture.debugElement.query(By.css('.btn-5'));
+      let buttonSubtractEl = fixture.debugElement.query(
+        By.css('.btn-subtract')
+      );
+      let buttonPercentEl = fixture.debugElement.query(By.css('.btn-percent'));
+      let buttonEqualEl = fixture.debugElement.query(By.css('.btn-equal'));
+
+      button1El.triggerEventHandler('click', null);
+      button0El.triggerEventHandler('click', null);
+      button0El.triggerEventHandler('click', null);
+      buttonSubtractEl.triggerEventHandler('click', null);
+      button5El.triggerEventHandler('click', null);
+      button0El.triggerEventHandler('click', null);
+      buttonPercentEl.triggerEventHandler('click', null);
+      buttonEqualEl.triggerEventHandler('click', null);
+      fixture.detectChanges();
+
+      fixture.whenStable().then(() => {
+        expect(component.result).toBe('50');
+      });
+    })
+  );
 });

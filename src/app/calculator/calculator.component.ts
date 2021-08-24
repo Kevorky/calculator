@@ -13,12 +13,18 @@ export class CalculatorComponent implements OnInit {
   secondNumber = '';
   currentOperand = '';
   equalPressed = false;
+  percentActive = false;
 
   constructor() {}
 
   ngOnInit(): void {}
 
   input(input: any) {
+    // If percent was pressed, wait for user to either press Equal or AC.
+    if (this.percentActive) {
+      return;
+    }
+
     // Remove trailing zero.
     this.result = this.result === '0' ? '' : this.result;
 
@@ -45,6 +51,11 @@ export class CalculatorComponent implements OnInit {
   }
 
   action(action: Operand) {
+    // If percent was pressed, wait for user to either press Equal or AC.
+    if (this.percentActive) {
+      return;
+    }
+
     if (this.firstNumber) {
       if (!this.secondNumber && !this.currentOperand) {
         this.result += action;
@@ -94,9 +105,32 @@ export class CalculatorComponent implements OnInit {
     this.firstNumber = '';
     this.secondNumber = '';
     this.currentOperand = '';
+    this.percentActive = false;
   }
 
   comingSoon() {
     alert('This feature is coming soon... Thank you for your patience.');
+  }
+
+  percent() {
+    if (!this.percentActive) {
+      if (this.firstNumber && this.secondNumber && this.currentOperand) {
+        this.result += '%';
+        this.percentActive = true;
+      }
+    }
+  }
+
+  equal() {
+    if (this.percentActive) {
+      this.secondNumber = (
+        (+this.firstNumber * +this.secondNumber) /
+        100
+      ).toString();
+
+      this.percentActive = false;
+    }
+
+    this.calculateResult();
   }
 }
